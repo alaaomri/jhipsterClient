@@ -119,12 +119,12 @@ export const UserManagement = (props: IUserManagementProps) => {
               <td>{user.email}</td>
               <td>
                 {user.activated ? (
-                  <Button color="success" onClick={toggleActive(user)}>
-                    <Translate contentKey="userManagement.activated">Activated</Translate>
+                  <Button color="danger" onClick={toggleActive(user)}>
+                    <Translate contentKey="userManagement.desactivate">Desactivate</Translate>
                   </Button>
                 ) : (
-                  <Button color="danger" onClick={toggleActive(user)}>
-                    <Translate contentKey="userManagement.deactivated">Deactivated</Translate>
+                  <Button color="success" onClick={toggleActive(user)}>
+                    <Translate contentKey="userManagement.activate">Activate</Translate>
                   </Button>
                 )}
               </td>
