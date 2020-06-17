@@ -1,17 +1,18 @@
-import './header.scss';
+import "./header.scss";
 
-import React, { useState } from 'react';
-import { Translate, Storage } from 'react-jhipster';
-import { Navbar, Nav, NavbarToggler, NavbarBrand, Collapse } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from "react";
+import { Translate, Storage } from "react-jhipster";
+import { Navbar, Nav, NavbarToggler, NavbarBrand, Collapse } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { NavLink as Link } from 'react-router-dom';
-import LoadingBar from 'react-redux-loading-bar';
+import { NavLink as Link } from "react-router-dom";
+import LoadingBar from "react-redux-loading-bar";
 
-import { Home, Brand } from './header-components';
-import { AdminMenu, EntitiesMenu, AccountMenu, LocaleMenu } from '../menus';
+import { Home, Brand } from "./header-components";
+import { AdminMenu, EntitiesMenu, AccountMenu, LocaleMenu } from "../menus";
 
 export interface IHeaderProps {
+  userName: string;
   isAuthenticated: boolean;
   isAdmin: boolean;
   ribbonEnv: string;
@@ -24,9 +25,9 @@ export interface IHeaderProps {
 const Header = (props: IHeaderProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleLocaleChange = event => {
+  const handleLocaleChange = (event) => {
     const langKey = event.target.value;
-    Storage.session.set('locale', langKey);
+    Storage.session.set("locale", langKey);
     props.onLocaleChange(langKey);
   };
 
@@ -54,9 +55,17 @@ const Header = (props: IHeaderProps) => {
           <Nav id="header-tabs" className="ml-auto" navbar>
             <Home />
             {props.isAuthenticated && <EntitiesMenu />}
-            {props.isAuthenticated && props.isAdmin && <AdminMenu showSwagger={props.isSwaggerEnabled} />}
-            <LocaleMenu currentLocale={props.currentLocale} onClick={handleLocaleChange} />
-            <AccountMenu isAuthenticated={props.isAuthenticated} />
+            {props.isAuthenticated && props.isAdmin && (
+              <AdminMenu showSwagger={props.isSwaggerEnabled} />
+            )}
+            <LocaleMenu
+              currentLocale={props.currentLocale}
+              onClick={handleLocaleChange}
+            />
+            <AccountMenu
+              isAuthenticated={props.isAuthenticated}
+              userName={props.userName}
+            />
           </Nav>
         </Collapse>
       </Navbar>
