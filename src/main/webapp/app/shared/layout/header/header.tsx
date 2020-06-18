@@ -1,15 +1,12 @@
-import "./header.scss";
+import './header.scss';
 
-import React, { useState } from "react";
-import { Translate, Storage } from "react-jhipster";
-import { Navbar, Nav, NavbarToggler, NavbarBrand, Collapse } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from 'react';
+import { Storage, Translate } from 'react-jhipster';
+import { Collapse, Nav, Navbar, NavbarToggler } from 'reactstrap';
+import LoadingBar from 'react-redux-loading-bar';
 
-import { NavLink as Link } from "react-router-dom";
-import LoadingBar from "react-redux-loading-bar";
-
-import { Home, Brand } from "./header-components";
-import { AdminMenu, EntitiesMenu, AccountMenu, LocaleMenu } from "../menus";
+import { Brand } from './header-components';
+import { AccountMenu, AdminMenu, EntitiesMenu, LocaleMenu } from '../menus';
 
 export interface IHeaderProps {
   userName: string;
@@ -53,7 +50,6 @@ const Header = (props: IHeaderProps) => {
         <Brand />
         <Collapse isOpen={menuOpen} navbar>
           <Nav id="header-tabs" className="ml-auto" navbar>
-            <Home />
             {props.isAuthenticated && <EntitiesMenu />}
             {props.isAuthenticated && props.isAdmin && (
               <AdminMenu showSwagger={props.isSwaggerEnabled} />
