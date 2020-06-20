@@ -1,4 +1,4 @@
-# All In One Client SIDE
+# All In One :Only Client side with reactjs
 
 This application was generated using JHipster 6.9.1.<br>
 This application use Reactjs and redux as FrontEnd Framework.<br>
