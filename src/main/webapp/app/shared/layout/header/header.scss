@@ -60,6 +60,8 @@ Navbar styles
 .brand-title {
   font-size: 24px;
   color: $header-color;
+  font-family: 'Lucida Console';
+
   &:hover {
     color: $header-color-hover;
     text-decoration: none;
@@ -72,4 +74,8 @@ Navbar styles
   position: absolute;
   top: 0px;
   z-index: 1031;
+}
+
+a {
+  font-weight: normal;
 }

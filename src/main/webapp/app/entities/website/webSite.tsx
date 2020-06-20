@@ -44,6 +44,9 @@ export const WebSite = (props: IWebSiteProps) => {
               <th className="hand">
                 <Translate contentKey="website.fields.userAgent">User Agent</Translate>
               </th>
+              <th className="hand">
+                <Translate contentKey="website.fields.holdingTag">holding Tag</Translate>
+              </th>
             </tr>
             </thead>
             <tbody>
