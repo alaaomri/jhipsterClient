@@ -1,0 +1,12 @@
+{
+  "website": {
+    "fields": {
+      "id": "ID",
+      "name": "Name",
+      "url": "Url",
+      "userAgent": "User Agent",
+      "description": "Description",
+      "holdingTag": "Holding Tag"
+    }
+  }
+}
