@@ -20,6 +20,7 @@ const initialState = {
   entity: defaultValue,
   updating: false,
   updateSuccess: false,
+  totalItems: 0,
 };
 
 export type WebSiteState = Readonly<typeof initialState>;
@@ -67,6 +68,7 @@ export default (state: WebSiteState = initialState, action): WebSiteState => {
         ...state,
         loading: false,
         entities: action.payload.data,
+        totalItems: parseInt(action.payload.headers['x-total-count'], 10),
       };
     }
     case SUCCESS(ACTION_TYPES.CREATE_WEBSITE):
@@ -97,10 +99,13 @@ const apiUrl = 'api/websites';
 
 // Actions
 
-export const getEntities: ICrudGetAllAction<IWebSite> = (page, size, sort) => ({
-  type: ACTION_TYPES.FETCH_WEBSITE_LIST,
-  payload: axios.get<IWebSite>(`${apiUrl}?cacheBuster=${new Date().getTime()}`),
-});
+export const getEntities: ICrudGetAllAction<IWebSite> = (page, size, sort) => {
+  const requestUrl = `${apiUrl}${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
+  return {
+    type: ACTION_TYPES.FETCH_WEBSITE_LIST,
+    payload: axios.get<IWebSite>(requestUrl),
+  };
+};
 
 export const reset = () => ({
   type: ACTION_TYPES.RESET,
