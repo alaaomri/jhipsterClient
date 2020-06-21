@@ -108,27 +108,27 @@ export const WebSite = (props: IWebSiteProps) => {
             <td>{webSite.url}</td>
             <td>{webSite.userAgent}</td>
             <td>{webSite.holdingTag}</td>
-            <td>
-              <Button tag={Link} to={`${match.url}/${webSite.id}`} color="info" size="sm">
-                <FontAwesomeIcon icon="eye"/>{' '}
-                <span className="d-none d-md-inline">
+            <td className="text-right">
+              <div className="btn-group flex-btn-group-container">
+                <Button tag={Link} to={`${match.url}/${webSite.id}`} color="info" size="sm">
+                  <FontAwesomeIcon icon="eye"/>{' '}
+                  <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.view">View</Translate>
                         </span>
-              </Button>
-              &nbsp;
-              <Button tag={Link} to={`${match.url}/${webSite.id}/edit`} color="primary" size="sm">
-                <FontAwesomeIcon icon="pencil-alt"/>{' '}
-                <span className="d-none d-md-inline">
+                </Button>
+                <Button tag={Link} to={`${match.url}/${webSite.id}/edit`} color="primary" size="sm">
+                  <FontAwesomeIcon icon="pencil-alt"/>{' '}
+                  <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.edit">Edit</Translate>
                         </span>
-              </Button>
-              &nbsp;
-              <Button tag={Link} to={`${match.url}/${webSite.id}/delete`} color="danger" size="sm">
-                <FontAwesomeIcon icon="trash"/>{' '}
-                <span className="d-none d-md-inline">
+                </Button>
+                <Button tag={Link} to={`${match.url}/${webSite.id}/delete`} color="danger" size="sm">
+                  <FontAwesomeIcon icon="trash"/>{' '}
+                  <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.delete">Delete</Translate>
                         </span>
-              </Button>
+                </Button>
+              </div>
             </td>
           </tr>
         ))}
