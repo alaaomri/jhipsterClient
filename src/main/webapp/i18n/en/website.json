@@ -1,12 +1,24 @@
 {
   "website": {
+    "home": {
+      "title": "WebSites",
+      "createLabel": "Create a new WebSite",
+      "createOrEditLabel": "Create or edit a WebSite",
+      "notFound": "No WebSites found"
+    },
     "fields": {
       "id": "ID",
       "name": "Name",
       "url": "Url",
-      "userAgent": "User Agent",
+      "userAgent": "User Agent/Navigator",
       "description": "Description",
       "holdingTag": "Holding Tag"
+    },
+    "detail": {
+      "title": "WebSite"
+    },
+    "delete": {
+      "question": "Are you sure you want to delete website {{ id }}?"
     }
   }
 }

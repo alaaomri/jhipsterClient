@@ -9,8 +9,7 @@ import WebSite from './website';
 const Routes = ({ match }) => (
   <div>
     <Switch>
-      <ErrorBoundaryRoute exact path="/web" component={WebSite}/>
-      <ErrorBoundaryRoute path="/website" component={WebSite}/>
+      <ErrorBoundaryRoute path={`${match.url}websites`} component={WebSite}/>
 
     </Switch>
   </div>

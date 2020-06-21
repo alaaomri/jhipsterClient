@@ -4,7 +4,7 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import { getEntities } from './webSite.reducer';
 import { Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Table } from 'reactstrap';
+import { Button, Table } from 'reactstrap';
 import { IRootState } from 'app/shared/reducers';
 
 export interface IWebSiteProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {
@@ -20,7 +20,7 @@ export const WebSite = (props: IWebSiteProps) => {
     <div>
       <h2 id="webSite-heading">
         WebSites
-        <Link to={`${match.url}`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
+        <Link to={`${match.url}/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
           <FontAwesomeIcon icon="plus"/>
           &nbsp;
           Create new WebSite
@@ -47,6 +47,7 @@ export const WebSite = (props: IWebSiteProps) => {
               <th className="hand">
                 <Translate contentKey="website.fields.holdingTag">holding Tag</Translate>
               </th>
+              <th></th>
             </tr>
             </thead>
             <tbody>
@@ -58,6 +59,27 @@ export const WebSite = (props: IWebSiteProps) => {
                 <td>{webSite.name}</td>
                 <td>{webSite.url}</td>
                 <td>{webSite.userAgent}</td>
+                <td>{webSite.holdingTag}</td>
+                <td>
+                  <Button tag={Link} to={`${match.url}/${webSite.id}`} color="info" size="sm">
+                    <FontAwesomeIcon icon="eye"/>{' '}
+                    <span className="d-none d-md-inline">
+                          <Translate contentKey="entity.action.view">View</Translate>
+                        </span>
+                  </Button>
+                  <Button tag={Link} to={`${match.url}/${webSite.id}/edit`} color="primary" size="sm">
+                    <FontAwesomeIcon icon="pencil-alt"/>{' '}
+                    <span className="d-none d-md-inline">
+                          <Translate contentKey="entity.action.edit">Edit</Translate>
+                        </span>
+                  </Button>
+                  <Button tag={Link} to={`${match.url}/${webSite.id}/delete`} color="danger" size="sm">
+                    <FontAwesomeIcon icon="trash"/>{' '}
+                    <span className="d-none d-md-inline">
+                          <Translate contentKey="entity.action.delete">Delete</Translate>
+                        </span>
+                  </Button>
+                </td>
               </tr>
             ))}
             </tbody>
