@@ -76,11 +76,15 @@ Navbar styles
   z-index: 1031;
 }
 
-.dropdown-item {
-  font-weight: 300;
-  color: #000000;
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 251, 251, 1);
+  font-weight: normal;
 }
 
 a {
   font-weight: normal;
+}
+
+.dropdown-menu {
+  font-size: 0.8rem;
 }

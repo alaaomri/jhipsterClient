@@ -44,15 +44,15 @@ const Header = (props: IHeaderProps) => {
   return (
     <div id="app-header">
       {renderDevRibbon()}
-      <LoadingBar className="loading-bar" />
-      <Navbar dark expand="sm" fixed="top" className="bg-dark">
-        <NavbarToggler aria-label="Menu" onClick={toggleMenu} />
-        <Brand />
+      <LoadingBar className="loading-bar"/>
+      <Navbar dark expand="sm" fixed="top" className="bg-primary">
+        <NavbarToggler aria-label="Menu" onClick={toggleMenu}/>
+        <Brand/>
         <Collapse isOpen={menuOpen} navbar>
           <Nav id="header-tabs" className="ml-auto" navbar>
-            {props.isAuthenticated && <EntitiesMenu />}
+            {props.isAuthenticated && <EntitiesMenu/>}
             {props.isAuthenticated && props.isAdmin && (
-              <AdminMenu showSwagger={props.isSwaggerEnabled} />
+              <AdminMenu showSwagger={props.isSwaggerEnabled}/>
             )}
             <LocaleMenu
               currentLocale={props.currentLocale}

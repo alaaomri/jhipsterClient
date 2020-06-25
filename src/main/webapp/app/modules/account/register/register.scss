@@ -1,0 +1,20 @@
+.av-valid.required,
+.av-valid[required] {
+  border-left: 5px solid green;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid,
+.av-invalid:not(form),
+.is-invalid:not(form) {
+  border-left: 5px solid red;
+}
+
+.form-control:focus,
+.form-control.is-invalid:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #5cb3fd;
+  outline: 0;
+  box-shadow: none;
+}

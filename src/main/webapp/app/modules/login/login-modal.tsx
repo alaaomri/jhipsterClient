@@ -1,7 +1,7 @@
 import React from 'react';
 import { Translate, translate } from 'react-jhipster';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Alert, Row, Col } from 'reactstrap';
-import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
+import { Alert, Button, Col, Label, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
+import { AvField, AvForm, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { Link } from 'react-router-dom';
 
 export interface ILoginModalProps {
@@ -62,14 +62,15 @@ class LoginModal extends React.Component<ILoginModalProps> {
               </Col>
             </Row>
             <div className="mt-1">&nbsp;</div>
-            <Alert color="warning">
+            <Alert color="success">
               <Link to="/account/reset/request">
                 <Translate contentKey="login.password.forgot">Did you forget your password?</Translate>
               </Link>
             </Alert>
-            <Alert color="warning">
+            <Alert color="success">
               <span>
-                <Translate contentKey="global.messages.info.register.noaccount">You don&apos;t have an account yet?</Translate>
+                <Translate
+                  contentKey="global.messages.info.register.noaccount">You don&apos;t have an account yet?</Translate>
               </span>{' '}
               <Link to="/account/register">
                 <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
