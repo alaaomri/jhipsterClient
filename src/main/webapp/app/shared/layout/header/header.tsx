@@ -1,15 +1,12 @@
-import "./header.scss";
+import './header.scss';
 
-import React, { useState } from "react";
-import { Translate, Storage } from "react-jhipster";
-import { Navbar, Nav, NavbarToggler, NavbarBrand, Collapse } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from 'react';
+import { Storage, Translate } from 'react-jhipster';
+import { Collapse, Nav, Navbar, NavbarToggler } from 'reactstrap';
+import LoadingBar from 'react-redux-loading-bar';
 
-import { NavLink as Link } from "react-router-dom";
-import LoadingBar from "react-redux-loading-bar";
-
-import { Home, Brand } from "./header-components";
-import { AdminMenu, EntitiesMenu, AccountMenu, LocaleMenu } from "../menus";
+import { Brand, Home } from './header-components';
+import { AccountMenu, AdminMenu, EntitiesMenu, LocaleMenu } from '../menus';
 
 export interface IHeaderProps {
   userName: string;
@@ -47,16 +44,16 @@ const Header = (props: IHeaderProps) => {
   return (
     <div id="app-header">
       {renderDevRibbon()}
-      <LoadingBar className="loading-bar" />
-      <Navbar dark expand="sm" fixed="top" className="bg-dark">
-        <NavbarToggler aria-label="Menu" onClick={toggleMenu} />
-        <Brand />
+      <LoadingBar className="loading-bar"/>
+      <Navbar dark expand="sm" fixed="top" className="bg-primary">
+        <NavbarToggler aria-label="Menu" onClick={toggleMenu}/>
+        <Brand/>
         <Collapse isOpen={menuOpen} navbar>
           <Nav id="header-tabs" className="ml-auto" navbar>
-            <Home />
-            {props.isAuthenticated && <EntitiesMenu />}
+            <Home/>
+            {props.isAuthenticated && <EntitiesMenu/>}
             {props.isAuthenticated && props.isAdmin && (
-              <AdminMenu showSwagger={props.isSwaggerEnabled} />
+              <AdminMenu showSwagger={props.isSwaggerEnabled}/>
             )}
             <LocaleMenu
               currentLocale={props.currentLocale}
