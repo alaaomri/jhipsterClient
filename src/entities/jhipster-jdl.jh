@@ -1,20 +1,24 @@
 entity Answer {
+	code String required
 	answer String required
 }
 
 entity Subject {
+	code String required
 	subjectName String required
 }
 
 entity Question{
+	code String required
 	question String required
 }
 
 entity Quiz{
-	QuizName String required
-    TimeBegin LocalDate required
-    TimeEnd LocalDate required
-    Duration Integer required
+	quizName String required
+    code String required
+    timeBegin LocalDate required
+    timeEnd LocalDate required
+    duration Integer required
 }
 
 entity Customer {
@@ -29,13 +33,14 @@ entity Customer {
 
 
 relationship ManyToMany {
-    Customer{quiz} to Quiz{customer}
-    Question{quiz} to Quiz{question}
+    Customer{quiz(code)} to Quiz {customer}
+    Question{quiz(code)} to Quiz {question}
+    Answer{question(code)} to Question{answer}
 }
 
 relationship ManyToOne {
-    Quiz{subject} to Subject
-    Answer{question} to Question
+    Quiz{subject(subjectName)} to Subject
+
 }
 
 relationship OneToOne {
@@ -51,4 +56,4 @@ paginate all with pagination
 dto * with mapstruct
 
 // Set service options to all except few
-service all with serviceClass 
+service all with serviceClass
