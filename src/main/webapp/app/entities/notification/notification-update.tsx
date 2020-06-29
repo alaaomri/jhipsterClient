@@ -18,7 +18,7 @@ export const NotificationUpdate = (props: INotificationUpdateProps) => {
   const [quizId, setQuizId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { notificationEntity, users, quizzes, loading, updating } = props;
+  const { notificationEntity, quizzes, users, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/notification' + props.location.search);
@@ -116,15 +116,30 @@ export const NotificationUpdate = (props: INotificationUpdateProps) => {
                   placeholder={'YYYY-MM-DD HH:mm'}
                   value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.notificationEntity.sentDate)}
                   validate={{
-                    required: { value: true, errorMessage: translate('entity.validation.required') },
+                    required: { value: true, errorMessage: translate('entity.validation.required') }
                   }}
                 />
               </AvGroup>
               <AvGroup check>
                 <Label id="isOpenedLabel">
-                  <AvInput id="notification-isOpened" type="checkbox" className="form-check-input" name="isOpened" />
+                  <AvInput id="notification-isOpened" type="checkbox" className="form-check-input" name="isOpened"/>
                   <Translate contentKey="jhipsterClientApp.notification.isOpened">Is Opened</Translate>
                 </Label>
+              </AvGroup>
+              <AvGroup>
+                <Label for="notification-quiz">
+                  <Translate contentKey="jhipsterClientApp.notification.quiz">Quiz</Translate>
+                </Label>
+                <AvInput id="notification-quiz" type="select" className="form-control" name="quizId">
+                  <option value="" key="0"/>
+                  {quizzes
+                    ? quizzes.map(otherEntity => (
+                      <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.code}
+                      </option>
+                    ))
+                    : null}
+                </AvInput>
               </AvGroup>
               <AvGroup>
                 <Label for="notification-user">
@@ -133,8 +148,8 @@ export const NotificationUpdate = (props: INotificationUpdateProps) => {
                 <AvInput id="notification-user" type="select" className="form-control" name="userId" required>
                   {users
                     ? users.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.login}
+                      <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.login}
                         </option>
                       ))
                     : null}
@@ -142,21 +157,6 @@ export const NotificationUpdate = (props: INotificationUpdateProps) => {
                 <AvFeedback>
                   <Translate contentKey="entity.validation.required">This field is required.</Translate>
                 </AvFeedback>
-              </AvGroup>
-              <AvGroup>
-                <Label for="notification-quiz">
-                  <Translate contentKey="jhipsterClientApp.notification.quiz">Quiz</Translate>
-                </Label>
-                <AvInput id="notification-quiz" type="select" className="form-control" name="quizId">
-                  <option value="" key="0" />
-                  {quizzes
-                    ? quizzes.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.code}
-                        </option>
-                      ))
-                    : null}
-                </AvInput>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/notification" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
@@ -180,21 +180,21 @@ export const NotificationUpdate = (props: INotificationUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  users: storeState.userManagement.users,
   quizzes: storeState.quiz.entities,
+  users: storeState.userManagement.users,
   notificationEntity: storeState.notification.entity,
   loading: storeState.notification.loading,
   updating: storeState.notification.updating,
-  updateSuccess: storeState.notification.updateSuccess,
+  updateSuccess: storeState.notification.updateSuccess
 });
 
 const mapDispatchToProps = {
-  getUsers,
   getQuizzes,
+  getUsers,
   getEntity,
   updateEntity,
   createEntity,
-  reset,
+  reset
 };
 
 type StateProps = ReturnType<typeof mapStateToProps>;

@@ -92,15 +92,18 @@ export const Notification = (props: INotificationProps) => {
                   <Translate contentKey="jhipsterClientApp.notification.sentDate">Sent Date</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('isOpened')}>
-                  <Translate contentKey="jhipsterClientApp.notification.isOpened">Is Opened</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="jhipsterClientApp.notification.isOpened">Is Opened</Translate> <FontAwesomeIcon
+                  icon="sort"/>
                 </th>
                 <th>
-                  <Translate contentKey="jhipsterClientApp.notification.user">User</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="jhipsterClientApp.notification.quiz">Quiz</Translate> <FontAwesomeIcon
+                  icon="sort"/>
                 </th>
                 <th>
-                  <Translate contentKey="jhipsterClientApp.notification.quiz">Quiz</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="jhipsterClientApp.notification.user">User</Translate> <FontAwesomeIcon
+                  icon="sort"/>
                 </th>
-                <th />
+                <th/>
               </tr>
             </thead>
             <tbody>
@@ -117,8 +120,9 @@ export const Notification = (props: INotificationProps) => {
                     {notification.sentDate ? <TextFormat type="date" value={notification.sentDate} format={APP_DATE_FORMAT} /> : null}
                   </td>
                   <td>{notification.isOpened ? 'true' : 'false'}</td>
+                  <td>{notification.quizCode ?
+                    <Link to={`quiz/${notification.quizId}`}>{notification.quizCode}</Link> : ''}</td>
                   <td>{notification.userLogin ? notification.userLogin : ''}</td>
-                  <td>{notification.quizCode ? <Link to={`quiz/${notification.quizId}`}>{notification.quizCode}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${notification.id}`} color="info" size="sm">

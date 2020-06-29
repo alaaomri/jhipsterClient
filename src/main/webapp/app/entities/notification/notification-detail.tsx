@@ -51,16 +51,16 @@ export const NotificationDetail = (props: INotificationDetailProps) => {
           </dt>
           <dd>{notificationEntity.isOpened ? 'true' : 'false'}</dd>
           <dt>
-            <Translate contentKey="jhipsterClientApp.notification.user">User</Translate>
-          </dt>
-          <dd>{notificationEntity.userLogin ? notificationEntity.userLogin : ''}</dd>
-          <dt>
             <Translate contentKey="jhipsterClientApp.notification.quiz">Quiz</Translate>
           </dt>
           <dd>{notificationEntity.quizCode ? notificationEntity.quizCode : ''}</dd>
+          <dt>
+            <Translate contentKey="jhipsterClientApp.notification.user">User</Translate>
+          </dt>
+          <dd>{notificationEntity.userLogin ? notificationEntity.userLogin : ''}</dd>
         </dl>
         <Button tag={Link} to="/notification" replace color="info">
-          <FontAwesomeIcon icon="arrow-left" />{' '}
+          <FontAwesomeIcon icon="arrow-left"/>{' '}
           <span className="d-none d-md-inline">
             <Translate contentKey="entity.action.back">Back</Translate>
           </span>
