@@ -369,3 +369,34 @@ http://stackoverflow.com/questions/23436430/bootstrap-3-input-group-100-width */
   background-image: none;
   border-color: #6c757d;
 }
+
+.btn {
+  font-size: 0.8rem;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1c75cd;
+  border-color: #1c75cd;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #1c75cd;
+  border-color: #0062cc;
+  box-shadow: 0 0 0 0.05rem rgba(38, 143, 255, 0.5);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.05rem rgba(38, 143, 255, 0.5);
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #1c75cd;
+}
