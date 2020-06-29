@@ -1,0 +1,40 @@
+{
+  "name": "Subject",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "subjectName",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "quiz",
+      "otherEntityRelationshipName": "subject",
+      "relationshipName": "quiz",
+      "otherEntityField": "code",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200629184918",
+  "entityTableName": "subject",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

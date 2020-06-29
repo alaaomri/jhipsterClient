@@ -1,0 +1,69 @@
+entity Answer {
+	code String required
+	answer String required
+}
+
+entity Subject {
+	code String required
+	subjectName String required
+}
+
+entity Question{
+	code String required
+	question String required
+}
+
+entity Quiz{
+	quizName String required
+    code String required
+    timeBegin Instant required
+    timeEnd Instant required
+    duration Integer required
+}
+
+entity Notification {
+    date Instant required
+    details String
+    sentDate Instant required
+    isOpened Boolean 
+}
+
+entity Customer {
+    gender Gender required
+    phone String required
+    birthDate LocalDate required
+    addressLine1 String required
+    addressLine2 String
+    city String required
+    country String required
+}
+
+
+relationship ManyToMany {
+    Customer{quiz(code)} to Quiz {customer(id)}
+    Quiz {question(code)} to Question{quiz(code)}
+    Answer{question(code)} to Question{answer(code)}
+    Quiz{subject(subjectName)} to Subject{quiz(code)}
+}
+
+relationship ManyToOne {
+    
+    Notification{quiz(code)} to Quiz
+   
+}
+
+relationship OneToOne {
+    Customer{user(login) required} to User
+    Notification{user(login) required} to User
+}
+
+enum Gender {
+    MALE, FEMALE, OTHER
+}
+
+paginate all with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceClass 

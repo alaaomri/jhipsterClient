@@ -1,0 +1,48 @@
+{
+  "name": "Question",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "question",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "quiz",
+      "otherEntityRelationshipName": "question",
+      "relationshipName": "quiz",
+      "otherEntityField": "code",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "answer",
+      "otherEntityRelationshipName": "question",
+      "relationshipName": "answer",
+      "otherEntityField": "code",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200629185018",
+  "entityTableName": "question",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
