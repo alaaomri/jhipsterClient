@@ -12,17 +12,11 @@ import activate, { ActivateState } from 'app/modules/account/activate/activate.r
 import password, { PasswordState } from 'app/modules/account/password/password.reducer';
 import settings, { SettingsState } from 'app/modules/account/settings/settings.reducer';
 import passwordReset, { PasswordResetState } from 'app/modules/account/password-reset/password-reset.reducer';
-// prettier-ignore
 import answer, { AnswerState } from 'app/entities/answer/answer.reducer';
-// prettier-ignore
 import customer, { CustomerState } from 'app/entities/customer/customer.reducer';
-// prettier-ignore
 import notification, { NotificationState } from 'app/entities/notification/notification.reducer';
-// prettier-ignore
 import question, { QuestionState } from 'app/entities/question/question.reducer';
-// prettier-ignore
 import quiz, { QuizState } from 'app/entities/quiz/quiz.reducer';
-// prettier-ignore
 import subject, { SubjectState } from 'app/entities/subject/subject.reducer';
 
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */

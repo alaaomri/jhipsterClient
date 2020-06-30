@@ -6,9 +6,11 @@ import { Collapse, Nav, Navbar, NavbarToggler } from 'reactstrap';
 import LoadingBar from 'react-redux-loading-bar';
 
 import { Brand } from './header-components';
-import { AccountMenu, AdminMenu, EntitiesMenu, LocaleMenu } from '../menus';
+import { AccountMenu, AdminMenu, EntitiesMenu, LocaleMenu, NotificationComponent } from '../menus';
 
 export interface IHeaderProps {
+  notificationCount: number;
+  notificationItems: any;
   userName: string;
   isAuthenticated: boolean;
   isAdmin: boolean;
@@ -63,6 +65,9 @@ const Header = (props: IHeaderProps) => {
               isAuthenticated={props.isAuthenticated}
               userName={props.userName}
             />
+            {props.isAuthenticated && (
+              <NotificationComponent notifcationsCount={props.notificationCount}
+                                     notificationItems={props.notificationItems}/>)}
           </Nav>
         </Collapse>
       </Navbar>

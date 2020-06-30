@@ -8,6 +8,7 @@ import { defaultValue, INotification } from 'app/shared/model/notification.model
 
 export const ACTION_TYPES = {
   FETCH_NOTIFICATION_LIST: 'notification/FETCH_NOTIFICATION_LIST',
+  FETCH_NOTIFICATION_BY_USER: 'notification/FETCH_NOTIFICATION_BY_USER',
   FETCH_NOTIFICATION: 'notification/FETCH_NOTIFICATION',
   CREATE_NOTIFICATION: 'notification/CREATE_NOTIFICATION',
   UPDATE_NOTIFICATION: 'notification/UPDATE_NOTIFICATION',
@@ -32,6 +33,7 @@ export type NotificationState = Readonly<typeof initialState>;
 export default (state: NotificationState = initialState, action): NotificationState => {
   switch (action.type) {
     case REQUEST(ACTION_TYPES.FETCH_NOTIFICATION_LIST):
+    case REQUEST(ACTION_TYPES.FETCH_NOTIFICATION_BY_USER):
     case REQUEST(ACTION_TYPES.FETCH_NOTIFICATION):
       return {
         ...state,
@@ -49,6 +51,7 @@ export default (state: NotificationState = initialState, action): NotificationSt
         updating: true,
       };
     case FAILURE(ACTION_TYPES.FETCH_NOTIFICATION_LIST):
+    case FAILURE(ACTION_TYPES.FETCH_NOTIFICATION_BY_USER):
     case FAILURE(ACTION_TYPES.FETCH_NOTIFICATION):
     case FAILURE(ACTION_TYPES.CREATE_NOTIFICATION):
     case FAILURE(ACTION_TYPES.UPDATE_NOTIFICATION):
@@ -59,6 +62,13 @@ export default (state: NotificationState = initialState, action): NotificationSt
         updating: false,
         updateSuccess: false,
         errorMessage: action.payload,
+      };
+    case SUCCESS(ACTION_TYPES.FETCH_NOTIFICATION_BY_USER):
+      return {
+        ...state,
+        loading: false,
+        entities: action.payload.data,
+        totalItems: parseInt(action.payload.headers['x-total-count'], 10),
       };
     case SUCCESS(ACTION_TYPES.FETCH_NOTIFICATION_LIST):
       return {
@@ -106,6 +116,14 @@ export const getEntities: ICrudGetAllAction<INotification> = (page, size, sort) 
   return {
     type: ACTION_TYPES.FETCH_NOTIFICATION_LIST,
     payload: axios.get<INotification>(`${requestUrl}${sort ? '&' : '?'}cacheBuster=${new Date().getTime()}`),
+  };
+};
+
+export const getEntitiesByUser: ICrudGetAllAction<INotification> = (page, size, sort) => {
+  const requestUrl = `${apiUrl}/forCurrentUser${sort ? `?page=${page}&size=${size}` : ''}`;
+  return {
+    type: ACTION_TYPES.FETCH_NOTIFICATION_BY_USER,
+    payload: axios.get<INotification>(requestUrl),
   };
 };
 
